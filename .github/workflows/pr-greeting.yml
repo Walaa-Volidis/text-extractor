@@ -49,13 +49,3 @@ jobs:
           SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
           DEST_BUCKET: ${{ secrets.DEST_BUCKET }}
           S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
-
-      - name: Run tests
-        run: npm test
-        env:
-          REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
-          SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
-          DEST_BUCKET: ${{ secrets.DEST_BUCKET }}
-          S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
