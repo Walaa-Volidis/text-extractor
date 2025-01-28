@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeAll } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { uploadToS3 } from '../lib/uploadToS3';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
