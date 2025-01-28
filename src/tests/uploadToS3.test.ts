@@ -1,20 +1,21 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, test, expect, vi } from 'vitest';
 import { uploadToS3 } from '../lib/uploadToS3';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+const fn = vi.fn();
 
 vi.mock('@aws-sdk/client-s3', () => {
   return {
-    S3Client: vi.fn().mockImplementation(() => {
+    S3Client: fn.mockImplementation(() => {
       return {
-        send: vi.fn().mockResolvedValue({}),
+        send: fn.mockResolvedValue({}),
       };
     }),
-    PutObjectCommand: vi.fn(),
+    PutObjectCommand: fn,
   };
 });
 
 describe('uploadToS3', () => {
-  it('should upload an image to S3 and return the URL', async () => {
+  test('should upload an image to S3 and return the URL', async () => {
     const buffer = Buffer.from('test image data');
     const result = await uploadToS3(buffer);
 
