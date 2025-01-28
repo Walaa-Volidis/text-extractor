@@ -1,16 +1,16 @@
 import { describe, test, expect, vi } from 'vitest';
 import { uploadToS3 } from '../lib/uploadToS3';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
-const fn = vi.fn();
-
+//const fn = vi.fn();
+//why here its not working
 vi.mock('@aws-sdk/client-s3', () => {
   return {
-    S3Client: fn.mockImplementation(() => {
+    S3Client: vi.fn().mockImplementation(() => {
       return {
-        send: fn.mockResolvedValue({}),
+        send: vi.fn().mockResolvedValue({}),
       };
     }),
-    PutObjectCommand: fn,
+    PutObjectCommand: vi.fn(),
   };
 });
 
